@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lais Oliveira · links</title>
+<meta name="description" content="Links da Lais Oliveira (@laisooliveirae): conheça o Orivie e descubra sua personalidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Fredoka:wght@700&family=Silkscreen:wght@700&display=swap">
+<style>
+/* Layout: uma coluna estreita, como um carrossel aberto no celular. Visual claro único, de propósito (identidade pastel). */
+:root {
+  --oliva: #A3A62B; --oliva-texto: #6F7216; --matcha: #C3CF8E; --rosa: #F4D4D6; --amarelo: #FAF28C;
+  --azul: #CFE2F3; --vinho: #5A1E45; --tinta: #161616; --creme: #FBF8F0; --branco: #FFFFFF; --cinza: #5B5A52;
+  --pix: "Silkscreen", "Courier New", monospace;
+  --fred: "Fredoka", "Nunito", system-ui, sans-serif;
+  --dm: "DM Sans", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: var(--rosa); }
+body {
+  margin: 0; min-height: 100vh; color: var(--tinta); font-family: var(--dm); font-size: 16px; line-height: 1.5;
+  background:
+    radial-gradient(55% 30% at 0% 18%, var(--matcha) 0 45%, transparent 75%),
+    radial-gradient(50% 28% at 100% 62%, var(--matcha) 0 35%, transparent 72%),
+    radial-gradient(45% 25% at 90% 8%, #E9E0EE 0 35%, transparent 75%),
+    radial-gradient(50% 25% at 10% 95%, #E6DCEB 0 35%, transparent 75%),
+    var(--rosa);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 40px;
+  position: relative; overflow-x: hidden;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .35 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.page { max-width: 440px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 22px; position: relative; z-index: 1; }
+
+/* Topo: etiqueta com seta, como nas referências */
+.arrow-pill { border: 2px solid var(--vinho); border-radius: 999px; width: 120px; height: 30px; display: grid; place-items: center; }
+
+/* Foto */
+.photo-wrap { position: relative; width: 200px; height: 200px; margin-top: 6px; }
+.photo {
+  width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;
+  border: 4px solid var(--tinta); box-shadow: 8px 8px 0 var(--tinta); background: var(--creme);
+}
+.photo-wrap .badge { position: absolute; right: -58px; bottom: -18px; }
+.burst {
+  width: 96px; height: 96px; background: var(--vinho); display: grid; place-items: center; transform: rotate(-10deg);
+  clip-path: polygon(50% 0%,57% 11%,69% 4%,72% 17%,85% 15%,83% 28%,96% 31%,89% 42%,100% 50%,89% 58%,96% 69%,83% 72%,85% 85%,72% 83%,69% 96%,57% 89%,50% 100%,43% 89%,31% 96%,28% 83%,15% 85%,17% 72%,4% 69%,11% 58%,0% 50%,11% 42%,4% 31%,17% 28%,15% 15%,28% 17%,31% 4%,43% 11%);
+}
+.burst b { font-family: var(--dm); font-size: 1.15rem; line-height: 1; text-align: center; color: var(--azul); -webkit-text-stroke: .05em var(--tinta); paint-order: stroke fill; }
+.star { position: absolute; }
+
+/* Nome */
+.name { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 6px; }
+.pixel {
+  font-family: var(--pix); font-weight: 700; color: var(--rosa); line-height: 1; font-size: clamp(3.6rem, 18vw, 5rem); letter-spacing: .02em;
+  -webkit-text-stroke: .05em var(--tinta); paint-order: stroke fill;
+  text-shadow: .02em .02em 0 var(--tinta), .04em .04em 0 var(--tinta), .06em .06em 0 var(--tinta), .08em .08em 0 var(--tinta);
+}
+.fred-out { font-family: var(--fred); font-weight: 700; color: var(--amarelo); line-height: 1; font-size: clamp(2.4rem, 11vw, 3.1rem); -webkit-text-stroke: .08em var(--tinta); paint-order: stroke fill; }
+.tag { display: inline-block; background: var(--branco); color: var(--oliva-texto); padding: 2px 12px; font-size: 1rem; text-align: center; }
+.bio { text-align: center; color: var(--tinta); max-width: 34ch; font-size: 1.02rem; margin: 0; text-wrap: balance; }
+
+/* Links */
+.links { width: 100%; display: flex; flex-direction: column; gap: 16px; margin-top: 4px; }
+.link {
+  position: relative; display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--tinta);
+  background: var(--branco); border: 3px solid var(--tinta); border-radius: 22px; padding: 14px 16px;
+  box-shadow: 6px 6px 0 var(--tinta); transition: transform .12s ease, box-shadow .12s ease;
+}
+.link:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--tinta); }
+.link:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--tinta); }
+.link:focus-visible { outline: 3px solid var(--oliva); outline-offset: 4px; }
+.link .ico { flex: none; width: 52px; height: 52px; border-radius: 14px; border: 3px solid var(--tinta); display: grid; place-items: center; }
+.link .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.link .t { font-family: var(--fred); font-weight: 700; font-size: 1.3rem; line-height: 1.1; }
+.link .s { font-size: .92rem; color: var(--cinza); }
+.link .go { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--oliva); display: grid; place-items: center; }
+.link.main { background: var(--amarelo); padding-block: 20px; }
+.link.main .t { font-size: 1.55rem; }
+.link.main .s { color: var(--tinta); }
+.link .new { position: absolute; top: -18px; right: 14px; background: var(--rosa); border: 2px solid var(--tinta); border-radius: 999px; padding: 1px 12px; font-family: var(--pix); font-size: .75rem; letter-spacing: .06em; }
+
+/* Barra de busca com o @ (assinatura) */
+.search { display: flex; align-items: center; gap: 12px; background: var(--branco); border-radius: 20px; padding: 9px; box-shadow: 0 8px 22px rgba(90, 74, 80, .18); width: 100%; margin-top: 8px; }
+.search-in { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; border: 2px solid #E6E6E6; border-radius: 999px; padding: 7px 8px 7px 16px; }
+.search-in span { background: var(--rosa); color: var(--oliva-texto); padding: 0 8px; font-size: 1.15rem; border-left: 3px solid var(--oliva); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-in .go { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--oliva); display: grid; place-items: center; margin-left: auto; }
+footer { font-size: .8rem; color: var(--cinza); text-align: center; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .photo-wrap .burst { animation: wiggle 3s ease-in-out infinite; }
+  @keyframes wiggle { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(4deg) scale(1.05); } }
+  .star { animation: twinkle 2.4s ease-in-out infinite; }
+  .star:nth-of-type(2) { animation-delay: .8s; } .star:nth-of-type(3) { animation-delay: 1.6s; }
+  @keyframes twinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(.75); } }
+}
+</style>
+
+</head>
+<body>
+<main class="page">
+  <div class="arrow-pill" aria-hidden="true"><svg width="74" height="14" viewBox="0 0 74 14"><path d="M2 7H70M62 2l8 5-8 5" stroke="#5A1E45" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <div class="photo-wrap">
+    <svg class="star" style="left:-38px;top:10px" width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.4L12 17.5l-6.6 3.9 1.8-7.4L1.5 9.1 9 8.5z"/></svg>
+    <svg class="star" style="right:-30px;top:-14px" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FAF28C" stroke="#161616" stroke-width="1" d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.4L12 17.5l-6.6 3.9 1.8-7.4L1.5 9.1 9 8.5z"/></svg>
+    <svg class="star" style="left:-14px;bottom:-14px" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F7B9C8" d="M12 1.5l3 7 7.5.6-5.7 4.9 1.8 7.4L12 17.5l-6.6 3.9 1.8-7.4L1.5 9.1 9 8.5z"/></svg>
+    <img class="photo" src="foto.jpg" alt="Foto da Lais Oliveira" width="720" height="720">
+    <div class="badge"><div class="burst"><b>oi!</b></div></div>
+  </div>
+
+  <div class="name">
+    <div class="pixel">LAIS</div>
+    <div class="fred-out">oliveira</div>
+  </div>
+
+  <span class="tag">[ fé • autoconhecimento • criadora ]</span>
+  <p class="bio">Conteúdo sobre fé, emoções e se conhecer de verdade. Aqui estão os meus links.</p>
+
+  <nav class="links" aria-label="Links">
+    <a class="link main" href="https://laisoelisiario-blip.github.io/orivie-1/vendas/" target="_blank" rel="noopener">
+      <span class="new">NOVO</span>
+      <span class="ico" style="background:var(--rosa)"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#FBF8F0" stroke="#161616" stroke-width="2"/><path d="M12 6.5v11M6.5 12h11" stroke="#5A1E45" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="#FAF28C" stroke="#161616" stroke-width="1.6"/></svg></span>
+      <span class="txt"><span class="t">Orivie</span><span class="s">descubra sua personalidade e o seu jeito de viver</span></span>
+      <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 20 20"><path d="M5 15L15 5M8 5h7v7" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+    <a class="link" href="https://www.instagram.com/laisooliveirae/" target="_blank" rel="noopener">
+      <span class="ico" style="background:var(--matcha)"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#161616" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#161616" stroke-width="2.2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#161616"/></svg></span>
+      <span class="txt"><span class="t">Instagram</span><span class="s">carrosséis e vídeos novos toda semana</span></span>
+      <span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 20 20"><path d="M5 15L15 5M8 5h7v7" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </a>
+  </nav>
+
+  <div class="search" role="img" aria-label="@laisooliveirae">
+    <div class="search-in"><span>@laisooliveirae</span>
+      <div class="go"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M5 9l5-5 5 5" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+
+  <footer>feito com ♡ por @laisooliveirae</footer>
+</main>
+</body>
+</html>
