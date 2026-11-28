@@ -19,7 +19,7 @@ Textos, nichos, serviços, e-mail e links de TikTok/WhatsApp estão no `index.ht
 
 ## Começando sem marcas?
 
-Grave vídeos de exemplo com produtos que você já tem em casa (unboxing, review, tutorial, antes e depois) e use nos espaços de vídeo e foto. Quando fechar a primeira parceria, dá para voltar com uma seção de marcas.
+Grave vídeos de exemplo com produtos que você já tem em casa (get ready with me, review, tutorial, antes e depois) e use nos espaços de vídeo e foto. Quando fechar a primeira parceria, dá para voltar com uma seção de marcas.
 
 ## Painel de fotos (`/painel`)
 
