@@ -8,7 +8,7 @@ Basta salvar o arquivo com o nome certo. Enquanto o arquivo não existir, aparec
 
 | Onde aparece | Arquivo |
 | --- | --- |
-| Capa (foto vertical, de preferência sem fundo ou com céu) | `img/foto-capa.jpg` |
+| Capa (foto recortada, sem fundo, PNG) | `img/foto-capa.png` |
 | Sobre | `img/foto-sobre.jpg` |
 | Polaroid | `img/polaroid.jpg` |
 | Fotografia (6 fotos) | `img/foto-1.jpg` a `img/foto-6.jpg` |

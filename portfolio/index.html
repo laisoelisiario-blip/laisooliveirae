@@ -47,7 +47,9 @@ a { color: inherit; }
 .hero { position: relative; min-height: 100svh; background: linear-gradient(180deg, var(--ceu-1) 0%, var(--ceu-2) 100%); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
 .hero h1 { position: absolute; top: clamp(70px, 12vh, 120px); left: 0; right: 0; margin: 0; text-align: center; font-family: var(--serif); font-weight: 400; color: var(--vinho); line-height: .9; font-size: clamp(3.4rem, 13vw, 11rem); letter-spacing: -.02em; white-space: nowrap; }
 .hero h1 em { font-style: italic; }
-.hero-photo { position: relative; z-index: 2; margin: 0 auto; width: clamp(240px, 36vw, 440px); aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0; margin-top: clamp(150px, 26vh, 260px); box-shadow: 0 -10px 40px rgba(78, 20, 18, .12); }
+.hero-photo { position: relative; z-index: 2; margin: 0 auto; width: clamp(260px, 38vw, 500px); aspect-ratio: 2 / 3; margin-top: clamp(80px, 14vh, 150px); background: none; }
+.hero-photo::before { content: none; }
+.hero-photo > img { object-fit: contain; object-position: bottom; filter: drop-shadow(0 18px 30px rgba(78, 20, 18, .18)); }
 .note { position: absolute; z-index: 3; font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta); text-align: center; line-height: 1.4; }
 .note svg { display: block; margin: 6px auto 0; }
 .note.n1 { left: 9%; top: 52%; }
@@ -59,7 +61,7 @@ a { color: inherit; }
   .hero h1 .l2 { display: block; }
   .note { position: static; grid-row: 2; font-size: .62rem; margin: 22px 0 16px; padding-inline: 4px; }
   .note svg { display: none; }
-  .hero-photo { grid-column: 1 / -1; grid-row: 3; margin-top: 0; width: min(80vw, 340px); }
+  .hero-photo { grid-column: 1 / -1; grid-row: 3; margin-top: 0; width: min(86vw, 380px); }
 }
 
 /* ---------- 2. Sobre ---------- */
@@ -167,9 +169,9 @@ a { color: inherit; }
     <svg width="64" height="30" viewBox="0 0 64 30" aria-hidden="true"><path d="M4 24c16 2 34-4 52-16m0 0l-9 1m9-1l-3 9" fill="none" stroke="#2A1B18" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
-  <!-- Troque por uma foto sua em pé (vertical): salve como img/foto-capa.jpg -->
-  <div class="hero-photo ph" data-label="img/foto-capa.jpg">
-    <img src="img/foto-capa.jpg" alt="Lais Oliveira" onerror="this.remove()">
+  <!-- Foto recortada, sem fundo (PNG transparente): img/foto-capa.png -->
+  <div class="hero-photo ph" data-label="img/foto-capa.png">
+    <img src="img/foto-capa.png" alt="Lais Oliveira" width="1024" height="1536">
   </div>
 </header>
 
