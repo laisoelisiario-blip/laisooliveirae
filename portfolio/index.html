@@ -120,6 +120,30 @@ a { color: inherit; }
 .svc ul { margin: 4px 0 0; padding-left: 18px; font-size: .94rem; }
 @media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Processo ---------- */
+.process { background: var(--creme-2); padding: clamp(64px, 9vw, 110px) 0; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; list-style: none; margin: 0; padding: 0; counter-reset: passo; }
+.steps li { background: var(--creme); border-radius: 18px; padding: 28px 24px; }
+.steps .num { display: block; font-family: var(--serif); font-size: 3rem; line-height: 1; color: var(--vinho); margin-bottom: 14px; }
+.steps h3 { margin: 0 0 8px; font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--vinho); line-height: 1.1; }
+.steps .mais { font-family: var(--sans); font-weight: 500; }
+.steps p { margin: 0; color: var(--cinza); font-size: .96rem; }
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+.transforma { text-align: center; margin: clamp(48px, 7vw, 80px) auto 0; max-width: 40ch; }
+.transforma h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--vinho); font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.05; }
+.transforma p { margin: 0; color: var(--tinta); }
+
+/* ---------- Perguntas frequentes ---------- */
+.faq { padding: clamp(64px, 9vw, 110px) 0; }
+.faq-list { max-width: 760px; margin: 0 auto; border-top: 1px solid #E3D5C1; }
+.faq details { border-bottom: 1px solid #E3D5C1; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 4px; font-family: var(--serif); font-size: clamp(1.15rem, 2.6vw, 1.4rem); color: var(--vinho); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--mono); font-size: 1.3rem; flex: none; transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:focus-visible { outline: 2px solid var(--vinho); outline-offset: 2px; }
+.faq details p { margin: 0 4px 22px; color: var(--tinta); max-width: 60ch; }
+
 /* ---------- Contato ---------- */
 .contact { background: var(--vinho); color: var(--creme); text-align: center; padding: clamp(64px, 10vw, 120px) 0 40px; }
 .contact .kicker { color: var(--creme); }
@@ -127,10 +151,10 @@ a { color: inherit; }
 .contact p { max-width: 46ch; margin: 0 auto 30px; opacity: .9; }
 .contact .btn { background: var(--creme); color: var(--vinho); }
 .contact .btn:hover { background: var(--branco); }
-.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-top: 36px; font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 28px; margin-top: 36px; font-family: var(--mono); font-size: .82rem; letter-spacing: .02em; }
 .contact-links a { text-decoration: none; border-bottom: 1px solid rgba(248, 242, 232, .5); padding-bottom: 2px; }
 .contact-links a:hover { border-color: var(--creme); }
-.foot { margin-top: 64px; font-size: .78rem; opacity: .7; }
+.contact .foot { margin: 64px auto 0; font-size: .78rem; opacity: .7; }
 
 /* Entrada suave ao rolar */
 @media (prefers-reduced-motion: no-preference) {
@@ -170,6 +194,8 @@ a { color: inherit; }
       <li><a href="#videos">Vídeos</a></li>
       <li><a href="#fotos">Fotos</a></li>
       <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
@@ -300,20 +326,66 @@ a { color: inherit; }
       </div>
     </div>
   </section>
+
+  <!-- ============ 7. PROCESSO ============ -->
+  <section class="process" id="processo">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <p class="kicker">como eu edito meus vídeos</p>
+        <h2 class="h2">Meu processo</h2>
+      </div>
+      <ol class="steps reveal">
+        <li><span class="num">01</span><h3>Alinhamento</h3><p>Entendo a sua marca, o produto, o público e o objetivo de cada vídeo.</p></li>
+        <li><span class="num">02</span><h3>Estratégia</h3><p>Monto o roteiro e os ganchos pensando em onde o vídeo vai rodar.</p></li>
+        <li><span class="num">03</span><h3>Gravação <span class="mais">+</span> edição</h3><p>Gravo com luz natural e entrego o vídeo editado, com cortes, legendas e trilha.</p></li>
+      </ol>
+      <div class="transforma reveal">
+        <h3>Vamos transformar sua marca?</h3>
+        <p>Conteúdo verdadeiro, que gera conexão e faz o seu produto ser desejado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. PERGUNTAS FREQUENTES ============ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <p class="kicker">ficou com dúvida?</p>
+        <h2 class="h2">Perguntas frequentes</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>Como posso usar o conteúdo?</summary>
+          <p>Nas redes sociais da sua marca, no site e em anúncios (tráfego pago).</p>
+        </details>
+        <details>
+          <summary>Por quanto tempo?</summary>
+          <p>O uso em tráfego pago é de 3 meses.</p>
+        </details>
+        <details>
+          <summary>Tem exclusividade?</summary>
+          <p>Para garantir exclusividade, é necessária uma conversa e um investimento extra.</p>
+        </details>
+        <details>
+          <summary>Qual o tempo de entrega?</summary>
+          <p>7 dias após a chegada do produto.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- ============ 7. CONTATO ============ -->
 <footer class="contact" id="contato">
   <div class="wrap reveal">
-    <p class="kicker">vamos criar juntas?</p>
+    <p class="kicker">vamos?</p>
     <h2>Trabalhe<br>comigo</h2>
-    <p>Me conta sobre a sua marca e o que você precisa. Eu respondo em até 24 horas com uma proposta.</p>
-    <!-- Troque pelo seu e-mail profissional -->
-    <a class="btn" href="mailto:contato@seuemail.com?subject=Parceria%20UGC">Enviar e-mail</a>
+    <p>Me conta sobre a sua marca e o que você precisa.</p>
+    <a class="btn" href="mailto:ugclaisooliveirae@icloud.com?subject=Parceria%20UGC">Enviar e-mail</a>
     <div class="contact-links">
-      <a href="https://www.instagram.com/laisooliveirae/" target="_blank" rel="noopener">Instagram</a>
-      <a href="#" target="_blank" rel="noopener">TikTok</a>
-      <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:ugclaisooliveirae@icloud.com">ugclaisooliveirae@icloud.com</a>
+      <a href="https://wa.me/5591981269910" target="_blank" rel="noopener">WhatsApp (91) 98126-9910</a>
+      <a href="https://www.instagram.com/laisoliveira.ugc/" target="_blank" rel="noopener">Instagram @laisoliveira.ugc</a>
     </div>
     <p class="foot">© Lais Oliveira · UGC Creator</p>
   </div>

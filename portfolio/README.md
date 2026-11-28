@@ -15,7 +15,7 @@ Basta salvar o arquivo com o nome certo. Enquanto o arquivo não existir, aparec
 | Vídeos UGC (verticais 9:16) | `videos/video-1.mp4` a `videos/video-4.mp4` |
 | Imagem ao compartilhar o link | `img/foto-perfil.jpg` |
 
-Textos, nichos, serviços, e-mail e links de TikTok/WhatsApp estão no `index.html`.
+Textos, nichos, serviços, processo, perguntas frequentes e contatos estão no `index.html`.
 
 ## Começando sem marcas?
 
