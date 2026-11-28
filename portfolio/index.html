@@ -93,6 +93,8 @@ a { color: inherit; }
 .photo-grid .ph::before { color: #E9C9C0; }
 .photo-grid .ph:nth-child(2) { margin-top: clamp(20px, 4vw, 48px); }
 .photo-grid .ph:nth-child(5) { margin-top: clamp(20px, 4vw, 48px); }
+/* Com exatamente 4 fotos: uma linha de 4 no computador */
+@media (min-width: 761px) { .photo-grid:has(> .ph:nth-child(4):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); } .photo-grid:has(> .ph:nth-child(4):last-child) .ph:nth-child(4) { margin-top: clamp(20px, 4vw, 48px); } }
 .video-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 2vw, 20px); }
 .video-card { margin: 0; }
 .video-card .ph { aspect-ratio: 9 / 16; border-radius: 14px; }
@@ -236,7 +238,7 @@ a { color: inherit; }
       <div class="ph" data-label="img/foto-1.jpg"><img src="img/foto-1.jpg" alt="Lais segurando um body splash vermelho na luz do sol" loading="lazy" onerror="this.parentNode.remove()"></div>
       <div class="ph" data-label="img/foto-2.jpg"><img src="img/foto-2.jpg" alt="Lais aplicando creme facial" loading="lazy" onerror="this.parentNode.remove()"></div>
       <div class="ph" data-label="img/foto-3.jpg"><img src="img/foto-3.jpg" alt="Lais com pote de creme apoiado no queixo" loading="lazy" onerror="this.parentNode.remove()"></div>
-      <div class="ph" data-label="img/foto-4.jpg"><img src="img/foto-4.jpg" alt="Foto de produto 4" loading="lazy" onerror="this.parentNode.remove()"></div>
+      <div class="ph" data-label="img/foto-4.jpg"><img src="img/foto-4.jpg" alt="Lais segurando um óleo capilar" loading="lazy" onerror="this.parentNode.remove()"></div>
       <div class="ph" data-label="img/foto-5.jpg"><img src="img/foto-5.jpg" alt="Foto de produto 5" loading="lazy" onerror="this.parentNode.remove()"></div>
       <div class="ph" data-label="img/foto-6.jpg"><img src="img/foto-6.jpg" alt="Foto de produto 6" loading="lazy" onerror="this.parentNode.remove()"></div>
     </div>
