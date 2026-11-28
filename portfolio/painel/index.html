@@ -101,8 +101,10 @@ h2 { font-family: var(--serif); font-weight: 400; color: var(--vinho); font-size
   </article>
 </template>
 
-<script type="module">
-import { upload } from './blob-client.js';
+<script>
+// A biblioteca de envio só é carregada na hora de enviar (caminho absoluto: funciona em /painel e /painel/).
+let biblioteca = null;
+function carregarBiblioteca() { return biblioteca || (biblioteca = import('/painel/blob-client.js').catch(e => { biblioteca = null; throw new Error('Não consegui carregar o envio. Atualize a página e tente de novo.'); })); }
 
 const ESPACOS = [
   { id: 'foto-capa', grupo: 'perfil', nome: 'Capa', dica: 'Foto vertical, de preferência PNG sem fundo.', tipo: 'imagem', original: '/img/foto-capa.png', capa: true },
@@ -197,6 +199,7 @@ function montarCard(e) {
     try {
       const arquivo = e.tipo === 'imagem' ? await prepararImagem(original) : original;
       msg.textContent = 'Enviando…';
+      const { upload } = await carregarBiblioteca();
       await upload('slots/' + e.id, arquivo, {
         access: 'public',
         handleUploadUrl: '/api/upload',
