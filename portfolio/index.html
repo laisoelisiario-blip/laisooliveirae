@@ -24,6 +24,7 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; background: var(--creme); }
 body { margin: 0; font-family: var(--sans); color: var(--tinta); background: var(--creme); line-height: 1.6; overflow-x: hidden; }
 img, video { display: block; max-width: 100%; }
@@ -91,16 +92,16 @@ a { color: inherit; }
 .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 2vw, 22px); }
 .photo-grid .ph { aspect-ratio: 3 / 4; background: repeating-linear-gradient(135deg, #8B3430 0 14px, #823029 14px 28px); }
 .photo-grid .ph::before { color: #E9C9C0; }
-.photo-grid .ph:nth-child(2) { margin-top: clamp(20px, 4vw, 48px); }
-.photo-grid .ph:nth-child(5) { margin-top: clamp(20px, 4vw, 48px); }
+.photo-grid .ph.vazio { display: none; }
+.photo-grid .ph.desce { margin-top: clamp(20px, 4vw, 48px); }
 /* Com exatamente 4 fotos: uma linha de 4 no computador */
-@media (min-width: 761px) { .photo-grid:has(> .ph:nth-child(4):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); } .photo-grid:has(> .ph:nth-child(4):last-child) .ph:nth-child(4) { margin-top: clamp(20px, 4vw, 48px); } }
+@media (min-width: 761px) { .photo-grid[data-count="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .video-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 2vw, 20px); }
 .video-card { margin: 0; }
 .video-card .ph { aspect-ratio: 9 / 16; border-radius: 14px; }
 .video-card figcaption { margin-top: 10px; font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--cinza); }
 .video-card figcaption b { display: block; font-family: var(--serif); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 1.15rem; color: var(--vinho); }
-@media (max-width: 760px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo-grid .ph:nth-child(5) { margin-top: 0; } }
+@media (max-width: 760px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo-grid .ph.desce { margin-top: 0; } }
 
 /* ---------- Marcas ---------- */
 .brands { padding: clamp(56px, 8vw, 96px) 0; text-align: center; }
@@ -142,6 +143,21 @@ a { color: inherit; }
   @keyframes fade { from { opacity: 0; } }
 }
 </style>
+<script>
+  // Foto ou vídeo que não existe fica escondido; na grade de fotos, o espaço some.
+  function falhou(el) { el.hidden = true; arrumarGrade(); }
+  function arrumarGrade() {
+    var g = document.querySelector('.photo-grid'); if (!g) return;
+    var vis = [];
+    g.querySelectorAll('.ph').forEach(function (ph) {
+      var img = ph.querySelector('img'); var ok = img && !img.hidden;
+      ph.classList.toggle('vazio', !ok); if (ok) vis.push(ph);
+    });
+    var cols = vis.length === 4 ? 4 : 3;
+    vis.forEach(function (ph, i) { ph.classList.toggle('desce', cols === 4 ? i % 2 === 1 : i % 3 === 1); });
+    g.dataset.count = vis.length;
+  }
+</script>
 </head>
 <body>
 
@@ -173,7 +189,7 @@ a { color: inherit; }
 
   <!-- Foto recortada, sem fundo (PNG transparente): img/foto-capa.png -->
   <div class="hero-photo ph" data-label="img/foto-capa.png">
-    <img src="img/foto-capa.png" alt="Lais Oliveira" width="1024" height="1536">
+    <img data-slot="foto-capa" src="img/foto-capa.png" alt="Lais Oliveira" width="1024" height="1536">
   </div>
 </header>
 
@@ -184,12 +200,12 @@ a { color: inherit; }
       <div class="about-head reveal">
         <span class="script">Oi, eu sou a Lais</span>
         <h2>UGC Creator &amp;<br>Micro-influenciadora</h2>
-        <div class="polaroid"><div class="ph" data-label="img/polaroid.jpg"><img src="img/polaroid.jpg" alt="" onerror="this.remove()"></div></div>
+        <div class="polaroid"><div class="ph" data-label="img/polaroid.jpg"><img data-slot="polaroid" src="img/polaroid.jpg" alt="" onerror="falhou(this)"></div></div>
       </div>
 
       <div class="about-grid reveal">
         <div class="ph" data-label="img/foto-sobre.jpg">
-          <img src="img/foto-sobre.jpg" alt="Lais Oliveira" onerror="this.remove()">
+          <img data-slot="foto-sobre" src="img/foto-sobre.jpg" alt="Lais Oliveira" onerror="falhou(this)">
         </div>
         <div>
           <p>Eu crio conteúdo autêntico que conversa com pessoas de verdade. Vídeos curtos, fotos e roteiros pensados para gerar conexão, confiança e vontade de comprar, do jeito que o público já consome nas redes.</p>
@@ -212,19 +228,19 @@ a { color: inherit; }
     <div class="wrap video-grid reveal">
       <!-- Salve seus vídeos verticais (9:16) como videos/video-1.mp4 ... video-4.mp4 -->
       <figure class="video-card">
-        <div class="ph" data-label="videos/video-1.mp4"><video src="videos/video-1.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <div class="ph" data-label="videos/video-1.mp4"><video data-slot="video-1" src="videos/video-1.mp4" muted loop playsinline autoplay preload="metadata" onerror="falhou(this)"></video></div>
         <figcaption><b>Produto 1</b>Unboxing</figcaption>
       </figure>
       <figure class="video-card">
-        <div class="ph" data-label="videos/video-2.mp4"><video src="videos/video-2.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <div class="ph" data-label="videos/video-2.mp4"><video data-slot="video-2" src="videos/video-2.mp4" muted loop playsinline autoplay preload="metadata" onerror="falhou(this)"></video></div>
         <figcaption><b>Produto 2</b>Review</figcaption>
       </figure>
       <figure class="video-card">
-        <div class="ph" data-label="videos/video-3.mp4"><video src="videos/video-3.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <div class="ph" data-label="videos/video-3.mp4"><video data-slot="video-3" src="videos/video-3.mp4" muted loop playsinline autoplay preload="metadata" onerror="falhou(this)"></video></div>
         <figcaption><b>Produto 3</b>Tutorial</figcaption>
       </figure>
       <figure class="video-card">
-        <div class="ph" data-label="videos/video-4.mp4"><video src="videos/video-4.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <div class="ph" data-label="videos/video-4.mp4"><video data-slot="video-4" src="videos/video-4.mp4" muted loop playsinline autoplay preload="metadata" onerror="falhou(this)"></video></div>
         <figcaption><b>Produto 4</b>Antes e depois</figcaption>
       </figure>
     </div>
@@ -235,12 +251,12 @@ a { color: inherit; }
     <h2 class="mega reveal">Fotografia</h2>
     <div class="wrap photo-grid reveal">
       <!-- Salve suas fotos como img/foto-1.jpg ... foto-6.jpg. Foto que não existir some da grade. -->
-      <div class="ph" data-label="img/foto-1.jpg"><img src="img/foto-1.jpg" alt="Lais segurando um body splash vermelho na luz do sol" loading="lazy" onerror="this.parentNode.remove()"></div>
-      <div class="ph" data-label="img/foto-2.jpg"><img src="img/foto-2.jpg" alt="Lais aplicando creme facial" loading="lazy" onerror="this.parentNode.remove()"></div>
-      <div class="ph" data-label="img/foto-3.jpg"><img src="img/foto-3.jpg" alt="Lais com pote de creme apoiado no queixo" loading="lazy" onerror="this.parentNode.remove()"></div>
-      <div class="ph" data-label="img/foto-4.jpg"><img src="img/foto-4.jpg" alt="Lais segurando um óleo capilar" loading="lazy" onerror="this.parentNode.remove()"></div>
-      <div class="ph" data-label="img/foto-5.jpg"><img src="img/foto-5.jpg" alt="Foto de produto 5" loading="lazy" onerror="this.parentNode.remove()"></div>
-      <div class="ph" data-label="img/foto-6.jpg"><img src="img/foto-6.jpg" alt="Foto de produto 6" loading="lazy" onerror="this.parentNode.remove()"></div>
+      <div class="ph" data-label="img/foto-1.jpg"><img data-slot="foto-1" src="img/foto-1.jpg" alt="Lais segurando um body splash vermelho na luz do sol" loading="lazy" onerror="falhou(this)"></div>
+      <div class="ph" data-label="img/foto-2.jpg"><img data-slot="foto-2" src="img/foto-2.jpg" alt="Lais aplicando creme facial" loading="lazy" onerror="falhou(this)"></div>
+      <div class="ph" data-label="img/foto-3.jpg"><img data-slot="foto-3" src="img/foto-3.jpg" alt="Lais com pote de creme apoiado no queixo" loading="lazy" onerror="falhou(this)"></div>
+      <div class="ph" data-label="img/foto-4.jpg"><img data-slot="foto-4" src="img/foto-4.jpg" alt="Lais segurando um óleo capilar" loading="lazy" onerror="falhou(this)"></div>
+      <div class="ph" data-label="img/foto-5.jpg"><img data-slot="foto-5" src="img/foto-5.jpg" alt="Foto de produto 5" loading="lazy" onerror="falhou(this)"></div>
+      <div class="ph" data-label="img/foto-6.jpg"><img data-slot="foto-6" src="img/foto-6.jpg" alt="Foto de produto 6" loading="lazy" onerror="falhou(this)"></div>
     </div>
   </section>
 
@@ -309,6 +325,16 @@ a { color: inherit; }
     es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
   }, { threshold: .12 }) : null;
   document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('on'));
+  // Fotos e vídeos enviados pelo painel (/painel) substituem os arquivos originais.
+  fetch('/api/media').then(function (r) { return r.ok ? r.json() : {}; }).then(function (mapa) {
+    document.querySelectorAll('[data-slot]').forEach(function (el) {
+      var url = mapa[el.dataset.slot]; if (!url) return;
+      el.hidden = false; el.src = url;
+      if (el.tagName === 'VIDEO') { el.load(); var p = el.play(); if (p && p.catch) p.catch(function () {}); }
+    });
+    arrumarGrade();
+  }).catch(function () {});
+  arrumarGrade();
 </script>
 </body>
 </html>

@@ -20,3 +20,14 @@ Textos, nichos, serviços, e-mail e links de TikTok/WhatsApp estão no `index.ht
 ## Começando sem marcas?
 
 Grave vídeos de exemplo com produtos que você já tem em casa (unboxing, review, tutorial, antes e depois) e use nos espaços de vídeo e foto. Quando fechar a primeira parceria, dá para voltar com uma seção de marcas.
+
+## Painel de fotos (`/painel`)
+
+Página só sua para trocar fotos e vídeos pelo celular, sem mexer no código.
+
+- Endereço: `https://lais-ugc-portfolio.vercel.app/painel`
+- Os arquivos vão para o Vercel Blob (armazenamento da Vercel), então vídeos grandes funcionam (até 500 MB).
+- O que é enviado pelo painel aparece no lugar do arquivo original do mesmo espaço. "Remover" volta ao original.
+- A senha fica na variável `UPLOAD_PASSWORD` do projeto na Vercel (Settings → Environment Variables). Depois de criar ou trocar a senha, é preciso publicar de novo (Redeploy).
+
+Arquivos: `painel/index.html` (página), `painel/blob-client.js` (biblioteca `@vercel/blob/client` 2.8.2 empacotada para o navegador), `api/*.js` (rotas de envio, lista e remoção).

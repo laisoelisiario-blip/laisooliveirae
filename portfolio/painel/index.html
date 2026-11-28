@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel de fotos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Space+Mono&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Painel particular: visual claro único, igual ao portfólio. */
+:root {
+  --vinho: #6E1F1C; --vinho-escuro: #4E1412; --creme: #F8F2E8; --creme-2: #EFE6D8; --linha: #E3D5C1;
+  --tinta: #2A1B18; --cinza: #6B5D57; --branco: #FFFFFF; --ok: #2F6B3A; --erro: #A3261F;
+  --serif: "Bodoni Moda", "Didot", serif; --mono: "Space Mono", monospace; --sans: "DM Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--creme); color: var(--tinta); font-family: var(--sans); line-height: 1.5; }
+.wrap { width: min(1000px, 100% - 32px); margin: 0 auto; padding: 32px 0 64px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 24px; }
+h1 { margin: 0; font-family: var(--serif); font-weight: 400; color: var(--vinho); font-size: clamp(2rem, 7vw, 3rem); line-height: 1; }
+.top-links { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; display: flex; gap: 16px; }
+.top-links a, .top-links button { color: var(--vinho); background: none; border: 0; padding: 0; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.intro { color: var(--cinza); margin: 0 0 28px; max-width: 60ch; }
+
+.login { background: var(--branco); border: 1px solid var(--linha); border-radius: 18px; padding: 28px 22px; max-width: 420px; }
+.login label { display: block; font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--cinza); margin-bottom: 8px; }
+.login input { width: 100%; font: inherit; font-size: 1rem; padding: 12px 14px; border: 1px solid var(--linha); border-radius: 12px; background: var(--creme); color: var(--tinta); }
+.login input:focus-visible { outline: 2px solid var(--vinho); outline-offset: 2px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--vinho); color: var(--creme); border: 0; border-radius: 999px; padding: 11px 22px; font-family: var(--mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.btn:hover { background: var(--vinho-escuro); }
+.btn:focus-visible { outline: 2px solid var(--vinho); outline-offset: 3px; }
+.btn.claro { background: transparent; color: var(--vinho); border: 1px solid var(--vinho); }
+.btn.claro:hover { background: var(--creme-2); }
+.btn[disabled] { opacity: .5; cursor: progress; }
+.login .btn { margin-top: 14px; width: 100%; }
+.msg { margin: 12px 0 0; font-size: .92rem; min-height: 1.4em; }
+.msg.erro { color: var(--erro); }
+.msg.ok { color: var(--ok); }
+
+h2 { font-family: var(--serif); font-weight: 400; color: var(--vinho); font-size: 1.7rem; margin: 36px 0 14px; }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 16px; }
+.card { background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.card h3 { margin: 0; font-size: 1rem; font-weight: 700; }
+.card .dica { margin: -6px 0 0; font-size: .8rem; color: var(--cinza); }
+.prev { position: relative; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; background: repeating-linear-gradient(135deg, #EFE4D3 0 12px, #E9DDCB 12px 24px); display: grid; place-items: center; }
+.prev.video { aspect-ratio: 9 / 16; }
+.prev .vazio { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: #8A7663; }
+.prev img, .prev video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.prev.capa img { object-fit: contain; background: linear-gradient(180deg, #B9D3EA, #E3EEF6); }
+.selo { position: absolute; top: 8px; left: 8px; z-index: 1; background: var(--vinho); color: var(--creme); font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
+.acoes { display: flex; gap: 8px; flex-wrap: wrap; }
+.acoes .btn { flex: 1; padding-inline: 12px; }
+.barra { height: 6px; border-radius: 999px; background: var(--creme-2); overflow: hidden; }
+.barra i { display: block; height: 100%; width: 0; background: var(--vinho); transition: width .2s ease; }
+.card .msg { margin: 0; font-size: .82rem; min-height: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Painel de fotos</h1>
+    <div class="top-links">
+      <a href="/" target="_blank" rel="noopener">Ver o site</a>
+      <button type="button" id="sair" hidden>Sair</button>
+    </div>
+  </header>
+  <p class="intro">Só você acessa esta página. Escolha um espaço, toque em <b>Trocar</b> e selecione a foto ou o vídeo do celular. O site atualiza sozinho em até 1 minuto.</p>
+
+  <form class="login" id="login">
+    <label for="senha">Senha do painel</label>
+    <input id="senha" type="password" autocomplete="current-password" required>
+    <button class="btn" type="submit">Entrar</button>
+    <p class="msg" id="login-msg" role="status"></p>
+  </form>
+
+  <main id="painel" hidden>
+    <h2>Fotos de você</h2>
+    <div class="grade" data-grupo="perfil"></div>
+    <h2>Fotografia</h2>
+    <div class="grade" data-grupo="fotos"></div>
+    <h2>Vídeos UGC</h2>
+    <div class="grade" data-grupo="videos"></div>
+  </main>
+</div>
+
+<template id="tpl-card">
+  <article class="card">
+    <h3></h3>
+    <p class="dica"></p>
+    <div class="prev"><span class="vazio">vazio</span></div>
+    <div class="barra" hidden><i></i></div>
+    <p class="msg" role="status"></p>
+    <div class="acoes">
+      <label class="btn">Trocar<input type="file" hidden></label>
+      <button class="btn claro remover" type="button" hidden>Remover</button>
+    </div>
+  </article>
+</template>
+
+<script type="module">
+import { upload } from './blob-client.js';
+
+const ESPACOS = [
+  { id: 'foto-capa', grupo: 'perfil', nome: 'Capa', dica: 'Foto vertical, de preferência PNG sem fundo.', tipo: 'imagem', original: '/img/foto-capa.png', capa: true },
+  { id: 'foto-sobre', grupo: 'perfil', nome: 'Sobre', dica: 'Foto vertical sua.', tipo: 'imagem', original: '/img/foto-sobre.jpg' },
+  { id: 'polaroid', grupo: 'perfil', nome: 'Polaroid', dica: 'Uma selfie. Aparece quadrada.', tipo: 'imagem', original: '/img/polaroid.jpg' },
+  ...[1, 2, 3, 4, 5, 6].map(n => ({ id: 'foto-' + n, grupo: 'fotos', nome: 'Foto ' + n, dica: 'Foto vertical.', tipo: 'imagem', original: '/img/foto-' + n + '.jpg' })),
+  ...[1, 2, 3, 4].map(n => ({ id: 'video-' + n, grupo: 'videos', nome: 'Vídeo ' + n, dica: 'Vídeo vertical 9:16, até 500 MB.', tipo: 'video', original: '/videos/video-' + n + '.mp4' })),
+];
+
+const $ = s => document.querySelector(s);
+let senha = '';
+let enviados = {};
+
+function lembrar(valor) { try { valor ? localStorage.setItem('painel-senha', valor) : localStorage.removeItem('painel-senha'); } catch {} }
+function lembrada() { try { return localStorage.getItem('painel-senha') || ''; } catch { return ''; } }
+
+async function entrar(valor) {
+  const r = await fetch('/api/check', { method: 'POST', headers: { 'x-senha': valor } });
+  if (r.ok) return null;
+  const j = await r.json().catch(() => ({}));
+  return j.error || 'Não consegui entrar.';
+}
+
+$('#login').addEventListener('submit', async e => {
+  e.preventDefault();
+  const msg = $('#login-msg');
+  msg.className = 'msg'; msg.textContent = 'Conferindo…';
+  const valor = $('#senha').value;
+  const erro = await entrar(valor).catch(() => 'Sem conexão. Tente de novo.');
+  if (erro) { msg.className = 'msg erro'; msg.textContent = erro; return; }
+  senha = valor; lembrar(valor); abrirPainel();
+});
+
+$('#sair').addEventListener('click', () => { lembrar(''); location.reload(); });
+
+async function carregarEnviados() {
+  try { enviados = await (await fetch('/api/media?t=' + Date.now())).json(); } catch { enviados = {}; }
+}
+
+function mostrarPrevia(card, e) {
+  const prev = card.querySelector('.prev');
+  prev.querySelectorAll('img, video, .selo').forEach(n => n.remove());
+  prev.querySelector('.vazio').hidden = false;
+  const url = enviados[e.id] || e.original;
+  const el = document.createElement(e.tipo === 'video' ? 'video' : 'img');
+  if (e.tipo === 'video') { el.muted = true; el.playsInline = true; el.preload = 'metadata'; el.controls = true; }
+  else el.alt = e.nome;
+  el.addEventListener(e.tipo === 'video' ? 'loadedmetadata' : 'load', () => { prev.querySelector('.vazio').hidden = true; });
+  el.addEventListener('error', () => el.remove());
+  el.src = url;
+  prev.append(el);
+  card.querySelector('.remover').hidden = !enviados[e.id];
+  if (enviados[e.id]) { const s = document.createElement('span'); s.className = 'selo'; s.textContent = 'enviado por você'; prev.append(s); }
+}
+
+// Fotos muito grandes do celular são reduzidas antes de enviar (carrega mais rápido no site).
+async function prepararImagem(arquivo) {
+  if (!/^image\/(jpeg|png|webp)$/.test(arquivo.type)) return arquivo;
+  try {
+    const bmp = await createImageBitmap(arquivo);
+    const max = 2000, escala = Math.min(1, max / Math.max(bmp.width, bmp.height));
+    if (escala === 1 && arquivo.size < 3 * 1024 * 1024) return arquivo;
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * escala); c.height = Math.round(bmp.height * escala);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    const tipo = arquivo.type === 'image/png' ? 'image/png' : 'image/jpeg';
+    const blob = await new Promise(ok => c.toBlob(ok, tipo, 0.86));
+    return blob ? new File([blob], arquivo.name, { type: tipo }) : arquivo;
+  } catch { return arquivo; }
+}
+
+function montarCard(e) {
+  const card = $('#tpl-card').content.firstElementChild.cloneNode(true);
+  card.querySelector('h3').textContent = e.nome;
+  card.querySelector('.dica').textContent = e.dica;
+  const prev = card.querySelector('.prev');
+  if (e.tipo === 'video') prev.classList.add('video');
+  if (e.capa) prev.classList.add('capa');
+  const input = card.querySelector('input[type=file]');
+  input.accept = e.tipo === 'video' ? 'video/mp4,video/quicktime,video/webm' : 'image/jpeg,image/png,image/webp';
+  const msg = card.querySelector('.msg');
+  const barra = card.querySelector('.barra');
+  const botoes = card.querySelectorAll('.btn');
+  const ocupado = sim => botoes.forEach(b => { b.toggleAttribute('disabled', sim); });
+
+  input.addEventListener('change', async () => {
+    const original = input.files[0];
+    input.value = '';
+    if (!original) return;
+    ocupado(true); msg.className = 'msg'; msg.textContent = 'Preparando…';
+    barra.hidden = false; barra.firstElementChild.style.width = '0%';
+    try {
+      const arquivo = e.tipo === 'imagem' ? await prepararImagem(original) : original;
+      msg.textContent = 'Enviando…';
+      await upload('slots/' + e.id, arquivo, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        clientPayload: JSON.stringify({ senha }),
+        contentType: arquivo.type || undefined,
+        multipart: arquivo.size > 20 * 1024 * 1024,
+        onUploadProgress: p => { barra.firstElementChild.style.width = p.percentage + '%'; msg.textContent = 'Enviando… ' + Math.round(p.percentage) + '%'; },
+      });
+      await carregarEnviados();
+      mostrarPrevia(card, e);
+      msg.className = 'msg ok'; msg.textContent = 'Pronto! Já está no site.';
+    } catch (erro) {
+      msg.className = 'msg erro';
+      msg.textContent = (erro && erro.message || 'Falha no envio.').replace(/^Vercel Blob:\s*/, '');
+    } finally { ocupado(false); barra.hidden = true; }
+  });
+
+  card.querySelector('.remover').addEventListener('click', async () => {
+    if (!confirm('Remover o arquivo enviado em "' + e.nome + '"? O site volta a mostrar o original.')) return;
+    ocupado(true); msg.className = 'msg'; msg.textContent = 'Removendo…';
+    try {
+      const r = await fetch('/api/remove', { method: 'POST', headers: { 'x-senha': senha, 'content-type': 'application/json' }, body: JSON.stringify({ espaco: e.id }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || 'Não consegui remover.');
+      await carregarEnviados(); mostrarPrevia(card, e);
+      msg.className = 'msg ok'; msg.textContent = 'Removido.';
+    } catch (erro) { msg.className = 'msg erro'; msg.textContent = erro.message; }
+    finally { ocupado(false); }
+  });
+
+  return card;
+}
+
+async function abrirPainel() {
+  $('#login').hidden = true; $('#painel').hidden = false; $('#sair').hidden = false;
+  await carregarEnviados();
+  for (const e of ESPACOS) {
+    const card = montarCard(e);
+    document.querySelector(`.grade[data-grupo="${e.grupo}"]`).append(card);
+    mostrarPrevia(card, e);
+  }
+}
+
+// Entra direto se a senha já foi lembrada neste aparelho.
+const salva = lembrada();
+if (salva) {
+  entrar(salva).then(erro => { if (!erro) { senha = salva; abrirPainel(); } else lembrar(''); }).catch(() => {});
+}
+</script>
+</body>
+</html>
