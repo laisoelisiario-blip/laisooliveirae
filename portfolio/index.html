@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lais Oliveira · UGC Creator</title>
+<meta name="description" content="Portfólio UGC da Lais Oliveira: vídeos, fotos e conteúdo autêntico para marcas.">
+<meta property="og:title" content="Lais Oliveira · UGC Creator">
+<meta property="og:description" content="Vídeos, fotos e conteúdo autêntico para marcas.">
+<meta property="og:image" content="img/foto-perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Mrs+Saint+Delafield&family=Space+Mono&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Visual claro único, de propósito: identidade editorial (céu, creme e vinho). */
+:root {
+  --vinho: #6E1F1C; --vinho-escuro: #4E1412; --creme: #F8F2E8; --creme-2: #EFE6D8;
+  --ceu-1: #B9D3EA; --ceu-2: #E3EEF6; --tinta: #2A1B18; --cinza: #6B5D57; --branco: #FFFFFF;
+  --serif: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --script: "Mrs Saint Delafield", "Brush Script MT", cursive;
+  --mono: "Space Mono", "Courier New", monospace;
+  --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--creme); }
+body { margin: 0; font-family: var(--sans); color: var(--tinta); background: var(--creme); line-height: 1.6; overflow-x: hidden; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+.wrap { width: min(1120px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+/* ---------- Menu ---------- */
+.nav { position: absolute; inset: 0 0 auto; z-index: 5; padding: 18px var(--gutter); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--vinho); }
+.nav a { text-decoration: none; }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 640px) { .nav ul { display: none; } }
+
+/* ---------- Placeholders de foto/vídeo ----------
+   Coloque o arquivo com o nome indicado em img/ ou videos/ e ele aparece sozinho. */
+.ph { position: relative; overflow: hidden; background: repeating-linear-gradient(135deg, #E9DDCB 0 14px, #E3D5C1 14px 28px); }
+.ph::before { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 12px; font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: #8A7663; }
+.ph > img, .ph > video { position: relative; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- 1. Capa ---------- */
+.hero { position: relative; min-height: 100svh; background: linear-gradient(180deg, var(--ceu-1) 0%, var(--ceu-2) 100%); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero h1 { position: absolute; top: clamp(70px, 12vh, 120px); left: 0; right: 0; margin: 0; text-align: center; font-family: var(--serif); font-weight: 400; color: var(--vinho); line-height: .9; font-size: clamp(3.4rem, 13vw, 11rem); letter-spacing: -.02em; white-space: nowrap; }
+.hero h1 em { font-style: italic; }
+.hero-photo { position: relative; z-index: 2; margin: 0 auto; width: clamp(240px, 36vw, 440px); aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0; margin-top: clamp(150px, 26vh, 260px); box-shadow: 0 -10px 40px rgba(78, 20, 18, .12); }
+.note { position: absolute; z-index: 3; font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta); text-align: center; line-height: 1.4; }
+.note svg { display: block; margin: 6px auto 0; }
+.note.n1 { left: 9%; top: 52%; }
+.note.n2 { right: 8%; top: 62%; }
+.note.n3 { left: 11%; bottom: 10%; }
+@media (max-width: 760px) {
+  .hero { min-height: auto; padding-top: 84px; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: end; justify-content: stretch; }
+  .hero h1 { position: static; grid-column: 1 / -1; font-size: clamp(3rem, 17vw, 5rem); white-space: normal; padding-inline: var(--gutter); }
+  .hero h1 .l2 { display: block; }
+  .note { position: static; grid-row: 2; font-size: .62rem; margin: 22px 0 16px; padding-inline: 4px; }
+  .note svg { display: none; }
+  .hero-photo { grid-column: 1 / -1; grid-row: 3; margin-top: 0; width: min(80vw, 340px); }
+}
+
+/* ---------- 2. Sobre ---------- */
+.about { padding: clamp(64px, 10vw, 120px) 0; background: var(--creme); }
+.about-head { position: relative; text-align: center; margin-bottom: clamp(40px, 6vw, 72px); }
+.about-head .script { font-family: var(--script); font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--vinho); line-height: 1; display: block; transform: rotate(-6deg) translateX(-28%); }
+.about-head h2 { margin: -6px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.05; color: var(--vinho); text-transform: uppercase; letter-spacing: -.01em; }
+.polaroid { position: absolute; right: 4%; top: -24px; width: clamp(110px, 14vw, 170px); background: var(--branco); padding: 8px 8px 30px; box-shadow: 0 10px 24px rgba(42, 27, 24, .18); transform: rotate(6deg); }
+.polaroid .ph { aspect-ratio: 1; }
+@media (max-width: 760px) { .about-head .script { transform: rotate(-5deg); } .polaroid { position: relative; right: auto; top: auto; margin: 28px auto 0; } }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 6vw, 80px); align-items: center; max-width: 900px; margin-inline: auto; }
+.about-grid .ph { aspect-ratio: 4 / 5; }
+.about-grid p { margin: 0 0 1em; color: var(--tinta); font-size: 1.02rem; text-align: justify; hyphens: auto; }
+@media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+.btn { display: inline-block; background: var(--vinho); color: var(--creme); text-decoration: none; font-family: var(--mono); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; padding: 12px 30px; border-radius: 999px; transition: background .15s ease, transform .15s ease; }
+.btn:hover { background: var(--vinho-escuro); transform: translateY(-2px); }
+.btn:focus-visible { outline: 2px solid var(--vinho); outline-offset: 4px; }
+.stats { display: flex; flex-wrap: wrap; gap: 28px; margin: 6px 0 26px; }
+.stats div { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cinza); }
+.stats b { display: block; font-family: var(--serif); font-weight: 400; font-size: 2rem; color: var(--vinho); letter-spacing: 0; text-transform: none; line-height: 1.1; }
+
+/* ---------- Faixa de título gigante (Fotografia / Vídeos) ---------- */
+.band { background: var(--vinho); color: var(--creme); padding: clamp(18px, 3vw, 36px) 0 clamp(56px, 8vw, 100px); overflow: hidden; }
+.band.light { background: var(--creme-2); color: var(--vinho); }
+.mega { margin: 0 0 clamp(24px, 4vw, 48px); font-family: var(--serif); font-weight: 500; text-align: center; line-height: .85; font-size: clamp(3rem, 14.5vw, 12.5rem); letter-spacing: -.03em; text-transform: uppercase; white-space: nowrap; }
+.sub { text-align: center; font-family: var(--mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; margin: -8px 0 clamp(28px, 4vw, 44px); opacity: .85; }
+.photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 2vw, 22px); }
+.photo-grid .ph { aspect-ratio: 3 / 4; background: repeating-linear-gradient(135deg, #8B3430 0 14px, #823029 14px 28px); }
+.photo-grid .ph::before { color: #E9C9C0; }
+.photo-grid .ph:nth-child(2) { margin-top: clamp(20px, 4vw, 48px); }
+.photo-grid .ph:nth-child(5) { margin-top: clamp(20px, 4vw, 48px); }
+.video-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 2vw, 20px); }
+.video-card { margin: 0; }
+.video-card .ph { aspect-ratio: 9 / 16; border-radius: 14px; }
+.video-card figcaption { margin-top: 10px; font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--cinza); }
+.video-card figcaption b { display: block; font-family: var(--serif); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 1.15rem; color: var(--vinho); }
+@media (max-width: 760px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .photo-grid .ph:nth-child(5) { margin-top: 0; } }
+
+/* ---------- Marcas ---------- */
+.brands { padding: clamp(56px, 8vw, 96px) 0; text-align: center; }
+.kicker { font-family: var(--script); font-size: clamp(2rem, 5vw, 3rem); color: var(--vinho); line-height: 1; margin: 0; }
+.h2 { margin: 0 0 clamp(28px, 4vw, 44px); font-family: var(--serif); font-weight: 400; color: var(--vinho); font-size: clamp(1.8rem, 4.5vw, 3rem); text-transform: uppercase; line-height: 1.05; }
+.logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; list-style: none; padding: 0; margin: 0; }
+.logos li { border: 1px solid var(--vinho); color: var(--vinho); border-radius: 999px; padding: 10px 22px; font-family: var(--serif); font-size: 1.1rem; font-style: italic; }
+
+/* ---------- Serviços ---------- */
+.services { padding: 0 0 clamp(64px, 9vw, 110px); }
+.svc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.svc { background: var(--branco); border: 1px solid #E6DACA; border-radius: 18px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.svc .num { font-family: var(--mono); font-size: .72rem; color: var(--cinza); letter-spacing: .1em; }
+.svc h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 1.55rem; color: var(--vinho); line-height: 1.1; }
+.svc p { margin: 0; color: var(--cinza); font-size: .96rem; }
+.svc ul { margin: 4px 0 0; padding-left: 18px; font-size: .94rem; }
+@media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Contato ---------- */
+.contact { background: var(--vinho); color: var(--creme); text-align: center; padding: clamp(64px, 10vw, 120px) 0 40px; }
+.contact .kicker { color: var(--creme); }
+.contact h2 { margin: 0 0 20px; font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 8vw, 6rem); line-height: .95; text-transform: uppercase; }
+.contact p { max-width: 46ch; margin: 0 auto 30px; opacity: .9; }
+.contact .btn { background: var(--creme); color: var(--vinho); }
+.contact .btn:hover { background: var(--branco); }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-top: 36px; font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.contact-links a { text-decoration: none; border-bottom: 1px solid rgba(248, 242, 232, .5); padding-bottom: 2px; }
+.contact-links a:hover { border-color: var(--creme); }
+.foot { margin-top: 64px; font-size: .78rem; opacity: .7; }
+
+/* Entrada suave ao rolar */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+  .hero h1 { animation: rise 1s ease both; }
+  .hero-photo { animation: rise 1s .15s ease both; }
+  .note { animation: fade 1s .6s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(30px); } }
+  @keyframes fade { from { opacity: 0; } }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. CAPA ============ -->
+<header class="hero" id="topo">
+  <nav class="nav" aria-label="Menu">
+    <a href="#topo">Lais Oliveira</a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#videos">Vídeos</a></li>
+      <li><a href="#fotos">Fotos</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <h1>OI, <em>eu sou</em> <span class="l2">LAIS</span></h1>
+
+  <div class="note n1">UGC<br>Creator
+    <svg width="64" height="40" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 6c14-4 26 2 30 12s14 16 24 14m0 0l-8-6m8 6l-7 6" fill="none" stroke="#2A1B18" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="note n2">
+    <svg width="56" height="40" viewBox="0 0 56 40" aria-hidden="true"><path d="M50 34C40 34 30 28 30 18s8-12 12-6-6 12-16 8S10 10 8 4m0 0l-3 8m3-8l7 5" fill="none" stroke="#2A1B18" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Micro-<br>influenciadora
+  </div>
+  <div class="note n3">+20 marcas<br>atendidas
+    <svg width="64" height="30" viewBox="0 0 64 30" aria-hidden="true"><path d="M4 24c16 2 34-4 52-16m0 0l-9 1m9-1l-3 9" fill="none" stroke="#2A1B18" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- Troque por uma foto sua em pé (vertical): salve como img/foto-capa.jpg -->
+  <div class="hero-photo ph" data-label="img/foto-capa.jpg">
+    <img src="img/foto-capa.jpg" alt="Lais Oliveira" onerror="this.remove()">
+  </div>
+</header>
+
+<main>
+  <!-- ============ 2. SOBRE ============ -->
+  <section class="about" id="sobre">
+    <div class="wrap">
+      <div class="about-head reveal">
+        <span class="script">Oi, eu sou a Lais</span>
+        <h2>UGC Creator &amp;<br>Micro-influenciadora</h2>
+        <div class="polaroid"><div class="ph" data-label="img/polaroid.jpg"><img src="img/polaroid.jpg" alt="" onerror="this.remove()"></div></div>
+      </div>
+
+      <div class="about-grid reveal">
+        <div class="ph" data-label="img/foto-sobre.jpg">
+          <img src="img/foto-sobre.jpg" alt="Lais Oliveira" onerror="this.remove()">
+        </div>
+        <div>
+          <p>Eu crio conteúdo autêntico que conversa com pessoas de verdade. Vídeos curtos, fotos e roteiros pensados para gerar conexão, confiança e vontade de comprar, do jeito que o público já consome nas redes.</p>
+          <p>Meu conteúdo fala de fé, autoconhecimento, rotina e estilo de vida. Trabalho com marcas que querem aparecer de forma natural, com uma estética leve e um tom de conversa entre amigas.</p>
+          <div class="stats">
+            <div><b>+20</b>marcas</div>
+            <div><b>+100</b>vídeos entregues</div>
+            <div><b>48h</b>primeira entrega</div>
+          </div>
+          <a class="btn" href="#contato">Trabalhe comigo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. VÍDEOS UGC ============ -->
+  <section class="band light" id="videos">
+    <h2 class="mega reveal">Vídeos UGC</h2>
+    <p class="sub">unboxing · review · tutorial · antes e depois</p>
+    <div class="wrap video-grid reveal">
+      <!-- Salve seus vídeos verticais (9:16) como videos/video-1.mp4 ... video-4.mp4 -->
+      <figure class="video-card">
+        <div class="ph" data-label="videos/video-1.mp4"><video src="videos/video-1.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <figcaption><b>Marca 1</b>Unboxing</figcaption>
+      </figure>
+      <figure class="video-card">
+        <div class="ph" data-label="videos/video-2.mp4"><video src="videos/video-2.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <figcaption><b>Marca 2</b>Review</figcaption>
+      </figure>
+      <figure class="video-card">
+        <div class="ph" data-label="videos/video-3.mp4"><video src="videos/video-3.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <figcaption><b>Marca 3</b>Tutorial</figcaption>
+      </figure>
+      <figure class="video-card">
+        <div class="ph" data-label="videos/video-4.mp4"><video src="videos/video-4.mp4" muted loop playsinline autoplay preload="metadata" onerror="this.remove()"></video></div>
+        <figcaption><b>Marca 4</b>Antes e depois</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ 4. FOTOGRAFIA ============ -->
+  <section class="band" id="fotos">
+    <h2 class="mega reveal">Fotografia</h2>
+    <div class="wrap photo-grid reveal">
+      <!-- Salve suas fotos como img/foto-1.jpg ... foto-6.jpg -->
+      <div class="ph" data-label="img/foto-1.jpg"><img src="img/foto-1.jpg" alt="Foto de produto 1" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-label="img/foto-2.jpg"><img src="img/foto-2.jpg" alt="Foto de produto 2" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-label="img/foto-3.jpg"><img src="img/foto-3.jpg" alt="Foto de produto 3" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-label="img/foto-4.jpg"><img src="img/foto-4.jpg" alt="Foto de produto 4" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-label="img/foto-5.jpg"><img src="img/foto-5.jpg" alt="Foto de produto 5" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-label="img/foto-6.jpg"><img src="img/foto-6.jpg" alt="Foto de produto 6" loading="lazy" onerror="this.remove()"></div>
+    </div>
+  </section>
+
+  <!-- ============ 5. MARCAS ============ -->
+  <section class="brands">
+    <div class="wrap reveal">
+      <p class="kicker">com carinho para</p>
+      <h2 class="h2">Marcas parceiras</h2>
+      <ul class="logos">
+        <li>Marca 1</li><li>Marca 2</li><li>Marca 3</li><li>Marca 4</li><li>Marca 5</li><li>Marca 6</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 6. SERVIÇOS ============ -->
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
+        <p class="kicker">o que eu faço</p>
+        <h2 class="h2">Serviços</h2>
+      </div>
+      <div class="svc-grid reveal">
+        <article class="svc">
+          <span class="num">01</span>
+          <h3>Vídeo UGC</h3>
+          <p>Vídeos verticais de 15 a 60 segundos para anúncios e redes sociais.</p>
+          <ul><li>Roteiro incluso</li><li>3 opções de gancho</li><li>Uso em anúncios</li></ul>
+        </article>
+        <article class="svc">
+          <span class="num">02</span>
+          <h3>Fotos de produto</h3>
+          <p>Fotos lifestyle com luz natural, prontas para feed, site e e-commerce.</p>
+          <ul><li>5 a 10 fotos editadas</li><li>Formato vertical e quadrado</li></ul>
+        </article>
+        <article class="svc">
+          <span class="num">03</span>
+          <h3>Publi no perfil</h3>
+          <p>Conteúdo publicado no meu Instagram, falando direto com a minha comunidade.</p>
+          <ul><li>Reels + stories</li><li>Relatório de resultados</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 7. CONTATO ============ -->
+<footer class="contact" id="contato">
+  <div class="wrap reveal">
+    <p class="kicker">vamos criar juntas?</p>
+    <h2>Trabalhe<br>comigo</h2>
+    <p>Me conta sobre a sua marca e o que você precisa. Eu respondo em até 24 horas com uma proposta.</p>
+    <!-- Troque pelo seu e-mail profissional -->
+    <a class="btn" href="mailto:contato@seuemail.com?subject=Parceria%20UGC">Enviar e-mail</a>
+    <div class="contact-links">
+      <a href="https://www.instagram.com/laisooliveirae/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p class="foot">© Lais Oliveira · UGC Creator</p>
+  </div>
+</footer>
+
+<script>
+  // Mostra cada bloco quando ele entra na tela
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: .12 }) : null;
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('on'));
+</script>
+</body>
+</html>
