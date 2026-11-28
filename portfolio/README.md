@@ -15,4 +15,8 @@ Basta salvar o arquivo com o nome certo. Enquanto o arquivo não existir, aparec
 | Vídeos UGC (verticais 9:16) | `videos/video-1.mp4` a `videos/video-4.mp4` |
 | Imagem ao compartilhar o link | `img/foto-perfil.jpg` |
 
-Textos, números (+20 marcas etc.), nomes das marcas, serviços, e-mail e links de TikTok/WhatsApp estão no `index.html`.
+Textos, nichos, serviços, e-mail e links de TikTok/WhatsApp estão no `index.html`.
+
+## Começando sem marcas?
+
+Grave vídeos de exemplo com produtos que você já tem em casa (unboxing, review, tutorial, antes e depois) e use nos espaços de vídeo e foto. Quando fechar a primeira parceria, dá para voltar com uma seção de marcas.
